@@ -6,6 +6,8 @@ import (
 
 	"github.com/fimreal/goutils/ezap"
 	"github.com/gin-gonic/gin"
+
+	// 感觉生成的有问题
 	"github.com/qichengzx/coordtransform"
 )
 
@@ -34,17 +36,17 @@ func Transform(c *gin.Context) {
 func doTask(coord *Coordinates) (float64, float64) {
 	switch coord.From + coord.To {
 	case "bd09" + "gcj02":
-		return coordtransform.BD09toGCJ02(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.BD09toGCJ02(coord.Latitude, coord.Longitude)
 	case "gcj02" + "bd09":
-		return coordtransform.GCJ02toBD09(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.GCJ02toBD09(coord.Latitude, coord.Longitude)
 	case "wgs84" + "gcj02":
-		return coordtransform.WGS84toGCJ02(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.WGS84toGCJ02(coord.Latitude, coord.Longitude)
 	case "gcj02" + "wgs84":
-		return coordtransform.GCJ02toWGS84(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.GCJ02toWGS84(coord.Latitude, coord.Longitude)
 	case "bd09" + "wgs84":
-		return coordtransform.BD09toWGS84(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.BD09toWGS84(coord.Latitude, coord.Longitude)
 	case "wgs84" + "bd09":
-		return coordtransform.WGS84toBD09(float64(coord.Latitude), coord.Longitude)
+		return coordtransform.WGS84toBD09(coord.Latitude, coord.Longitude)
 	default:
 		return 0, 0
 	}

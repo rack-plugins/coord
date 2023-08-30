@@ -13,6 +13,6 @@ func AddRoute(g *gin.Engine) {
 	g.GET("/help/"+ID, help)
 
 	r := g.Group(RoutePrefix)
-	r.GET("/tansform", Transform)
-	r.POST("/tansform", Transform)
+	r.GET("/transform", Transform)
+	r.POST("/transform", Transform)
 }
